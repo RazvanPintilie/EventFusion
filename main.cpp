@@ -18,11 +18,13 @@ int main(int argc, char* argv[])
 
     QPushButton loginButton("Log In", &buttonsPage);
     QPushButton exitButton("Exit", &buttonsPage);
+    QPushButton idkButton("idk", &buttonsPage);
 
 
     QVBoxLayout mainLayout(&window);
     mainLayout.addWidget(&loginButton);
     mainLayout.addWidget(&exitButton);
+    mainLayout.addWidget(&idkButton);
 
     // Afișați fereastra principală
     window.show();

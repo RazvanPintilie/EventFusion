@@ -1,3 +1,8 @@
-/x64/
+/x64/Debug/EventFusion.tlog/
+/x64/Debug/*.recipe
+/x64/Debug/*.log
+/x64/Debug/*.obj
+/x64/Debug/*.natvis
+/x64/Debug/*.pdb
 *.vcxproj
 *.vcxproj.*

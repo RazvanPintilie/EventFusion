@@ -26,27 +26,10 @@
     <QtRcc Include="EventFusion.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="EventFusion.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtMoc Include="EventFusion.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="EventFusion.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoginForm.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="LoginForm.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
   </ItemGroup>
 </Project>

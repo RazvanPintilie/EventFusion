@@ -1,33 +1,19 @@
 ﻿#include <QApplication>
 #include <QWidget>
 #include <QPushButton>
-#include <QStackedWidget>
-#include "loginform.h"
-#include <qlayout.h>
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
-    QWidget window;
-    window.setWindowTitle("Login Example");
-    window.setFixedSize(1000, 400);
-    QWidget buttonsPage;
-    LoginForm loginPage;
-    QWidget mainPage;
+    QWidget exitPage;
+    exitPage.setWindowTitle("Exit Page");
 
-    QPushButton loginButton("Log In", &buttonsPage);
-    QPushButton exitButton("Exit", &buttonsPage);
-    QPushButton idkButton("idk", &buttonsPage);
+    QPushButton exitButton("Exit", &exitPage);
+    exitButton.setGeometry(100, 50, 100, 30);
 
+    QObject::connect(&exitButton, &QPushButton::clicked, &app, &QApplication::quit);
 
-    QVBoxLayout mainLayout(&window);
-    mainLayout.addWidget(&loginButton);
-    mainLayout.addWidget(&exitButton);
-    mainLayout.addWidget(&idkButton);
-
-    // Afișați fereastra principală
-    window.show();
+    exitPage.show();
 
     return app.exec();
 }

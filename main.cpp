@@ -1,19 +1,13 @@
 ﻿#include <QApplication>
-#include <QWidget>
-#include <QPushButton>
+#include "MainWindow.h"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     QApplication app(argc, argv);
+    MainWindow mainWindow;
 
-    QWidget exitPage;
-    exitPage.setWindowTitle("Exit Page");
+    // add other things
 
-    QPushButton exitButton("Exit", &exitPage);
-    exitButton.setGeometry(100, 50, 100, 30);
-
-    QObject::connect(&exitButton, &QPushButton::clicked, &app, &QApplication::quit);
-
-    exitPage.show();
-
+    mainWindow.show();
     return app.exec();
 }

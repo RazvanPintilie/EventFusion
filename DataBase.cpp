@@ -1,18 +1,26 @@
 #include "DataBase.h"
 using namespace std;
 
-void Database::Connection() {
+#define rootUser "root"
+#define rootPassword "root"
+#define dbName "piu"
+#define tableName std::string("test")
+
+void Database::Connection() 
+{
 	conn = mysql_init(0);
-	conn = mysql_real_connect(conn, "localhost", "root", "Student123", "testdb", 3307, NULL, 0);
+	conn = mysql_real_connect(conn, "localhost", rootUser, rootPassword, dbName, 3307, NULL, 0);
 
 }
 
-Database::Database() {
+Database::Database() 
+{
 	Database::Connection();
 }
 
-bool Database::searchUser(string username) {
-	string query = "SELECT password from test where username='" + username + "'";
+bool Database::searchUser(string username)
+{
+	string query = "SELECT password from " + tableName + " where username = '" + username + "'";
 	const char* q = query.c_str();
 	if (mysql_query(conn, q) != 0) {
 		return false;
@@ -36,7 +44,7 @@ bool Database::signupUser(string username, string password)
 		return false;
 	}
 
-	string query = "INSERT INTO test (username, password) VALUES ('" + username + "', '" + password + "')";
+	string query = "INSERT INTO " + tableName + " (username, password) VALUES('" + username + "', '" + password + "')";
 	const char* q = query.c_str();
 
 	if (mysql_query(conn, q) != 0) {

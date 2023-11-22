@@ -1,5 +1,6 @@
 ﻿#include "LoginPage.h"
 #include <QMessageBox>
+
 LoginPage::LoginPage(QWidget* parent) : QWidget(parent) 
 {
     setWindowTitle("Login Page");
@@ -20,15 +21,18 @@ LoginPage::LoginPage(QWidget* parent) : QWidget(parent)
     connect(loginButton, &QPushButton::clicked, this, &LoginPage::onLoginClicked);
 }
 
-void LoginPage::onLoginClicked() {
+void LoginPage::onLoginClicked() 
+{
     QString username = usernameEdit->text();
     QString password = passwordEdit->text();
     bool ok = database.searchUser(username.toStdString());
-    if (ok) {
+    if (ok) 
+    {
         QMessageBox::information(this, "Login", "Logare reușită");
         nextFrame = 1;
     }
-    else {
+    else
+    {
         QMessageBox::warning(this, "Login", "Logare eșuată");
         nextFrame = 0;
     }

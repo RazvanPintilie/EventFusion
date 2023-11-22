@@ -4,7 +4,8 @@
 #include <string>
 using namespace std;
 
-class Database {
+class Database 
+{
 private:
 	MYSQL* conn;
 	MYSQL_ROW row;
@@ -16,6 +17,5 @@ public:
 	bool signupUser(string username, string password);
 	
 };
-
 
 #endif

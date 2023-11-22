@@ -1,7 +1,8 @@
 #include "SingupPage.h"
 #include <QMessageBox>
 
-SignUpPage::SignUpPage(QWidget* parent) : QWidget(parent) {
+SignUpPage::SignUpPage(QWidget* parent) : QWidget(parent)
+{
     setWindowTitle("Sign Up Page");
 
     QVBoxLayout* layout = new QVBoxLayout(this);
@@ -19,20 +20,22 @@ SignUpPage::SignUpPage(QWidget* parent) : QWidget(parent) {
     connect(signUpButton, &QPushButton::clicked, this, &SignUpPage::onSignUpClicked);
 }
 
-void SignUpPage::onSignUpClicked() {
+void SignUpPage::onSignUpClicked() 
+{
     QString username = usernameEdit->text();
     QString password = passwordEdit->text();
     bool ok = database.signupUser(username.toStdString(), password.toStdString());
     
-    if (ok) {
+    if (ok) 
+    {
         QMessageBox::information(this, "Login", "Inregistrare reu?it?");
       
     }
-    else {
+    else
+    {
         QMessageBox::warning(this, "Login", "Inregistrare e?uat?");
         
     }
     // Add sign-up logic here
     // For now, just show a message box
-   
 }

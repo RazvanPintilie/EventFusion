@@ -17,7 +17,6 @@ LoginPage::LoginPage(QWidget* parent) : QWidget(parent)
     QPushButton* loginButton = new QPushButton("Login", this);
     layout->addWidget(loginButton);
 
-
     connect(loginButton, &QPushButton::clicked, this, &LoginPage::onLoginClicked);
 }
 
@@ -29,11 +28,10 @@ void LoginPage::onLoginClicked()
     if (ok) 
     {
         QMessageBox::information(this, "Login", "Logare reușită");
-        nextFrame = 1;
+        emit loginSuccess();
     }
     else
     {
         QMessageBox::warning(this, "Login", "Logare eșuată");
-        nextFrame = 0;
     }
 }

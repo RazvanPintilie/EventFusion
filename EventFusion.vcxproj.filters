@@ -38,6 +38,9 @@
     <ClCompile Include="DataBase.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="WorkPage.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h">
@@ -47,6 +50,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SingupPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="WorkPage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

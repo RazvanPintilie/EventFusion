@@ -29,6 +29,7 @@ void SignUpPage::onSignUpClicked()
     if (ok) 
     {
         QMessageBox::information(this, "Login", "Inregistrare reu?it?");
+        emit signupSuccess();
       
     }
     else

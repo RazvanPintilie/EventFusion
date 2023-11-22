@@ -15,6 +15,8 @@ public:
 
 private slots:
     void onSignUpClicked();
+signals:
+    void signupSuccess();
 
 private:
     QLineEdit* usernameEdit;

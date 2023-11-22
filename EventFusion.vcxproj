@@ -119,6 +119,7 @@
     </ClCompile>
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="SingupPage.cpp" />
+    <ClCompile Include="WorkPage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h" />
@@ -131,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h" />
+    <QtMoc Include="WorkPage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

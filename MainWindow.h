@@ -6,6 +6,7 @@
 #include <QStackedWidget>
 #include "LoginPage.h"
 #include "SingupPage.h"
+#include "WorkPage.h"
 
 class MainWindow : public QWidget
 {
@@ -13,11 +14,11 @@ class MainWindow : public QWidget
 
 public:
     MainWindow(QWidget* parent = nullptr);
-
 private slots:
     void onLoginClicked();
     void onSignUpClicked();
     void onBackClicked();
+    void switchToWorkPage();
 
 private:
     QStackedWidget* stackedWidget;
@@ -31,6 +32,7 @@ private:
     SignUpPage* signUpPage;
     QPushButton* exitButton;
     QPushButton* backButton;
+    WorkPage* workPage;
 };
 
 

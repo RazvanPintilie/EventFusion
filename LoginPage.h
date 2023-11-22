@@ -15,10 +15,10 @@ class LoginPage : public QWidget
 
 public:
     LoginPage(QWidget* parent = nullptr);
-    bool nextFrame;
 private slots:
     void onLoginClicked();
-
+signals:
+    void loginSuccess();
 private:
     QLineEdit* usernameEdit;
     QLineEdit* passwordEdit;

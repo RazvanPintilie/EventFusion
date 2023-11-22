@@ -5,6 +5,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QVBoxLayout>
+#include <QMessageBox>
+#include <QLabel>
+#include "DataBase.h"
 
 class LoginPage : public QWidget
 {
@@ -12,13 +15,17 @@ class LoginPage : public QWidget
 
 public:
     LoginPage(QWidget* parent = nullptr);
-
+    bool nextFrame;
 private slots:
     void onLoginClicked();
 
 private:
     QLineEdit* usernameEdit;
     QLineEdit* passwordEdit;
+    QLabel* usernameLabel;
+    QLabel* passwordLabel;
+    Database database;
+
 };
 
 #endif // LOGINPAGE_H

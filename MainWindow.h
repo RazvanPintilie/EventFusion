@@ -17,17 +17,20 @@ public:
 private slots:
     void onLoginClicked();
     void onSignUpClicked();
+    void onBackClicked();
 
 private:
     QStackedWidget* stackedWidget;
 
     QPushButton* loginButton;
     QPushButton* signUpButton;
+    
 
     // buttons
     LoginPage* loginPage;
     SignUpPage* signUpPage;
     QPushButton* exitButton;
+    QPushButton* backButton;
 };
 
 

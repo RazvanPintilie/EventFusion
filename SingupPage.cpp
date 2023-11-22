@@ -5,7 +5,7 @@ SignUpPage::SignUpPage(QWidget* parent) : QWidget(parent) {
     setWindowTitle("Sign Up Page");
 
     QVBoxLayout* layout = new QVBoxLayout(this);
-
+    database.Connection();
     usernameEdit = new QLineEdit(this);
     layout->addWidget(usernameEdit);
 
@@ -22,8 +22,17 @@ SignUpPage::SignUpPage(QWidget* parent) : QWidget(parent) {
 void SignUpPage::onSignUpClicked() {
     QString username = usernameEdit->text();
     QString password = passwordEdit->text();
-
+    bool ok = database.signupUser(username.toStdString(), password.toStdString());
+    
+    if (ok) {
+        QMessageBox::information(this, "Login", "Inregistrare reu?it?");
+      
+    }
+    else {
+        QMessageBox::warning(this, "Login", "Inregistrare e?uat?");
+        
+    }
     // Add sign-up logic here
     // For now, just show a message box
-    QMessageBox::information(this, "Sign Up", "Username: " + username + "\nPassword: " + password);
+   
 }

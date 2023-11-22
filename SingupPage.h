@@ -6,7 +6,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QVBoxLayout>
-
+#include "DataBase.h"
 class SignUpPage : public QWidget {
     Q_OBJECT
 
@@ -19,6 +19,7 @@ private slots:
 private:
     QLineEdit* usernameEdit;
     QLineEdit* passwordEdit;
+    Database database;
 };
 
 #endif // SIGNUPPAGE_H

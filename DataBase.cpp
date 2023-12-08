@@ -2,8 +2,7 @@
 using namespace std;
 
 #define rootUser "root"
-#define rootPassword "Student123"
-// #define rootPassword "root"
+#define rootPassword "root"
 #define dbName "piu"
 #define tableName std::string("test")
 

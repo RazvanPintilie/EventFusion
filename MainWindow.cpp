@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
     signUpButton = new QPushButton("Sign Up", buttonWidget);
     exitButton = new QPushButton("Exit", this);
     //backButton = new QPushButton("Back", this);
-    exitButton->setGeometry(700, 500, 100, 50);
+    exitButton->setGeometry(720, 520, 100, 50);
     //backButton->setGeometry(100, 500, 100, 50);
     buttonLayout->addWidget(loginButton);
     buttonLayout->addWidget(signUpButton);

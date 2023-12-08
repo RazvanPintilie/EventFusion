@@ -41,6 +41,9 @@
     <ClCompile Include="WorkPage.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="DraggableImage.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h">
@@ -53,6 +56,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="WorkPage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DraggableImage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

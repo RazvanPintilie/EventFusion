@@ -5,11 +5,18 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
 
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     QVBoxLayout* buttonsLayout = new QVBoxLayout();
-    currentValue = 100;
-    QLabel* constString = new QLabel("Capacitate ramasa: ", this);
+
+    remainingValue = 100;
+    QLabel* capacitateRamasaString = new QLabel("Capacitate ramasa: ", this);
+    QLabel* capacitateCurentaString = new QLabel("Capacitate curenta: ", this);
+    remainingValueLabel = new QLabel(QString::number(remainingValue), this);
     currentValueLabel = new QLabel(QString::number(currentValue), this);
-    constString->move(690, 0);
-    currentValueLabel->move(800, 0);
+
+    capacitateRamasaString->move(690, 0);
+    remainingValueLabel->move(800, 0);
+    capacitateCurentaString->move(690, 30);
+    currentValueLabel->move(800, 30);
+
     QString basePath = "";
     int imageIndex = 0;
     for (int index = 0; index < 4; ++index)
@@ -68,13 +75,15 @@ void WorkPage::decreaseValue(int buttonId) {
         break;
     }
 
-    if (currentValue - capacity < 0)
+    if (remainingValue - capacity < 0)
     {
         QMessageBox::information(this, "Warning", "Capacitate depasita");
     }
     else
     {
-        currentValue -= capacity;
+        remainingValue -= capacity;
+        currentValue += capacity;
+        remainingValueLabel->setText(QString::number(remainingValue));
         currentValueLabel->setText(QString::number(currentValue));
     }
 }

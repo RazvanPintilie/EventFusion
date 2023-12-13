@@ -22,8 +22,10 @@ private slots:
     void decreaseValue(int buttonId);
 private:
     QLabel* currentValueLabel;
+    QLabel* remainingValueLabel;
     QMap<int, QPushButton*> buttonMap; // Mapare ID buton - Buton
-    int currentValue;
+    int remainingValue;
+    int currentValue = 0;
     QVBoxLayout* mainLayout;
 };
 

@@ -22,7 +22,7 @@ protected:
 private:
     bool isDragging;
     QPoint offset;
-    QPoint originalPosition; // Pozi?ia original? a imaginii
+    QPoint originalPosition;
 };
 
 #endif // DRAGGABLEIMAGE_H

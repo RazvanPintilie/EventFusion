@@ -22,14 +22,13 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
         button->setIconSize(QSize(100, 100));
         button->setFixedSize(QSize(50, 50));
         button->setStyleSheet("QPushButton { border: 1px solid #000000; padding: 0; }");
-        DraggableImage* imageLabel = new DraggableImage(buttonIcon.pixmap(QSize(100, 100)), this);
-        imageLabel->setFixedSize(50, 50);
-        imageLabel->hide();
         auto generateImage = [=]() {
+            DraggableImage* imageLabel = new DraggableImage(buttonIcon.pixmap(QSize(100, 100)), this);
+            imageLabel->setFixedSize(50, 50);
+            imageLabel->hide();
             imageLabel->move(button->pos() + QPoint(0, 0));
             imageLabel->show();
             decreaseValue(buttonId);
-            
         };
         connect(button, &QPushButton::clicked, this, generateImage);
         buttonMap[buttonId] = button;

@@ -13,7 +13,20 @@ void DraggableImage::mousePressEvent(QMouseEvent* event) {
         offset = event->pos();
         event->accept();
     }
+    else if (event->button() == Qt::RightButton) {
+        rotateImage(); 
+        event->accept();
+    }
     QLabel::mousePressEvent(event);
+}
+
+void DraggableImage::rotateImage() {
+    QTransform transform;
+    int angle = 90; 
+    transform.rotate(angle);
+
+    QPixmap rotatedPixmap = pixmap().transformed(transform);
+    setPixmap(rotatedPixmap);
 }
 
 void DraggableImage::mouseMoveEvent(QMouseEvent* event) {

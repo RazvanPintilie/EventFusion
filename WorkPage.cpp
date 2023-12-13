@@ -51,30 +51,30 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
 }
 
 void WorkPage::decreaseValue(int buttonId) {
-	int valueToDecrease = 0;
+    int capacity = 0;
 
-	switch (buttonId) {
-	case 0:
-		valueToDecrease = 10;
-		break;
-	case 1:
-		valueToDecrease = 5;
-		break;
-	case 2:
-		valueToDecrease = 2;
-		break;
-	default:
-		valueToDecrease = 1;
-		break;
-	}
+    switch (buttonId) {
+    case 0:
+        capacity = 8;
+        break;
+    case 1:
+        capacity = 8;
+        break;
+    case 2:
+        capacity = 3;
+        break;
+    default:
+        capacity = 2;
+        break;
+    }
 
-	if (currentValue - valueToDecrease < 0)
-	{
-		QMessageBox::information(this, "Warning", "Capacitate depasita");
-	}
-	else
-	{
-		currentValue -= valueToDecrease;
-		currentValueLabel->setText(QString::number(currentValue));
-	}
+    if (currentValue - capacity < 0)
+    {
+        QMessageBox::information(this, "Warning", "Capacitate depasita");
+    }
+    else
+    {
+        currentValue -= capacity;
+        currentValueLabel->setText(QString::number(currentValue));
+    }
 }

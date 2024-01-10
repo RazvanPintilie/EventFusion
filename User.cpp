@@ -1,14 +1,17 @@
 #include "User.h"
 
-User& User::getInstance() {
+User& User::getInstance()
+{
     static User instance;
     return instance;
 }
 
-void User::setUsername(const QString& username) {
+void User::setUsername(const QString& username)
+{
     this->username = username;
 }
 
-QString User::getUsername(){
+QString User::getUsername()
+{
     return this->username;
 }

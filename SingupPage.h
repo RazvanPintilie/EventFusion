@@ -7,7 +7,8 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include "DataBase.h"
-class SignUpPage : public QWidget {
+class SignUpPage : public QWidget 
+{
     Q_OBJECT
 
 public:

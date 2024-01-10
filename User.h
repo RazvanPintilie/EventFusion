@@ -3,7 +3,8 @@
 
 #include <QString>
 
-class User {
+class User
+{
 public:
     static User& getInstance();
 

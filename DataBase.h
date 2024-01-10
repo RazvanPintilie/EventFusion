@@ -15,7 +15,6 @@ public:
 	Database();
 	bool searchUser(string username);
 	bool signupUser(string username, string password);
-	
 };
 
 #endif

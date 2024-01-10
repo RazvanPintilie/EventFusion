@@ -1,34 +1,45 @@
-class ImageDetail {
+class ImageDetail
+{
 private:
 	int x;
 	int y;
 	int id;
 public:
-	ImageDetail(int x, int y, int id) {
+	ImageDetail(int x, int y, int id)
+	{
 		this->x = x;
 		this->y = y;
 		this->id = id;
 	}
 	ImageDetail() {};
-	void setX(int x) {
+
+	void setX(int x)
+	{
 		this->x = x;
 	}
-	void setY(int) {
+
+	void setY(int)
+	{
 		this->y = y;
 	}
-	void setId(int id) {
+
+	void setId(int id)
+	{
 		this->id = id;
 	}
 
-	int getX() {
+	int getX()
+	{
 		return x;
 	}
-	int getY() {
+
+	int getY()
+	{
 		return y;
 	}
-	int getId() {
+
+	int getId()
+	{
 		return id;
 	}
-
-
 };

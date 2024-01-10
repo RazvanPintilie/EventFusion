@@ -4,12 +4,12 @@
 #include <QLabel>
 #include <QMouseEvent>
 
-class DraggableImage : public QLabel {
+class DraggableImage : public QLabel
+{
     Q_OBJECT
 
 public:
     DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent = nullptr);
-    
 
 signals:
     void imageMoved(const QPoint& newPos);

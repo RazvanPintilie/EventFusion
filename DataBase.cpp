@@ -6,14 +6,14 @@ using namespace std;
 #define dbName "piu"
 #define tableName std::string("test")
 
-void Database::Connection() 
+void Database::Connection()
 {
 	conn = mysql_init(0);
 	conn = mysql_real_connect(conn, "localhost", rootUser, rootPassword, dbName, 3307, NULL, 0);
 
 }
 
-Database::Database() 
+Database::Database()
 {
 	Database::Connection();
 }
@@ -22,14 +22,17 @@ bool Database::searchUser(string username)
 {
 	string query = "SELECT password from " + tableName + " where username = '" + username + "'";
 	const char* q = query.c_str();
-	if (mysql_query(conn, q) != 0) {
+	if (mysql_query(conn, q) != 0)
+	{
 		return false;
 	}
 	res = mysql_store_result(conn);
-	if (res == NULL) {
+	if (res == NULL)
+	{
 		return false;
 	}
-	while ((row = mysql_fetch_row(res))) {
+	while ((row = mysql_fetch_row(res)))
+	{
 		mysql_free_result(res);
 		return true;
 	}
@@ -47,7 +50,8 @@ bool Database::signupUser(string username, string password)
 	string query = "INSERT INTO " + tableName + " (username, password) VALUES('" + username + "', '" + password + "')";
 	const char* q = query.c_str();
 
-	if (mysql_query(conn, q) != 0) {
+	if (mysql_query(conn, q) != 0)
+	{
 		return false;
 	}
 	return true;

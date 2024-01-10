@@ -1,5 +1,7 @@
 ﻿#include "DraggableImage.h"
 
+DraggableImage* DraggableImage::selectedImage = nullptr;
+
 DraggableImage::DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent) : QLabel(parent), isDragging(false)
 {
 	setPixmap(pixmap);
@@ -9,6 +11,16 @@ DraggableImage::DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* par
 
 void DraggableImage::mousePressEvent(QMouseEvent* event)
 {
+	// Deselect the previously selected image (if any)
+	if (selectedImage != nullptr && selectedImage != this)
+	{
+		selectedImage->setSelected(false);
+	}
+
+	// Select the current image
+	selectedImage = this;
+	setSelected(true);
+
 	if (event->button() == Qt::LeftButton)
 	{
 		isDragging = true;
@@ -50,13 +62,14 @@ void DraggableImage::mouseReleaseEvent(QMouseEvent* event)
 	if (event->button() == Qt::LeftButton && isDragging)
 	{
 		isDragging = false;
-		setSelected(false);
+		// setSelected(false);
 		event->accept();
 	}
 	QLabel::mouseReleaseEvent(event);
 }
 
-void DraggableImage::restoreOriginalPosition() {
+void DraggableImage::restoreOriginalPosition()
+{
 	this->move(originalPosition);
 }
 
@@ -65,6 +78,8 @@ void DraggableImage::keyPressEvent(QKeyEvent* event)
 	if (event->key() == Qt::Key_Delete)
 	{
 		emit deleteKeyPressed(buttonId);
+		selectedImage->setSelected(false);
+		selectedImage = nullptr;
 		this->deleteLater();
 		event->accept();
 	}
@@ -78,7 +93,7 @@ void DraggableImage::setSelected(bool selected)
 {
 	if (selected)
 	{
-		QWidget::setStyleSheet("border: 2px solid black;");
+		QWidget::setStyleSheet("border: 2px solid red;");
 	}
 	else
 	{

@@ -3,7 +3,7 @@
 #include "User.h"
 
 
-WorkPage::WorkPage(QWidget* parent) : QWidget(parent)
+WorkPage::WorkPage(QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
 {
 	setWindowTitle("Work Page");
 
@@ -44,12 +44,36 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent)
 		button->setStyleSheet("QPushButton { border: 1px solid #000000; padding: 0; }");
 		auto generateImage = [=]()
 		{
+			// Check if there's a highlighted image and unhighlight it
+			if (highlightedImage)
+			{
+				highlightedImage->setSelected(false);
+			}
+
 			currentUsernameLabel = new QLabel(User::getInstance().getUsername(), this);
 			DraggableImage* imageLabel = new DraggableImage(buttonIcon.pixmap(QSize(100, 100)), buttonId, this);
 			imageLabel->setFixedSize(50, 50);
-			imageLabel->move(button->pos() + QPoint(0, 0));
+			imageLabel->move(button->pos() + QPoint(100, 10));
 			imageLabel->show();
 			imageLabel->setFocusPolicy(Qt::StrongFocus);
+
+			// Highlight the newly generated image
+			imageLabel->setSelected(true);
+
+			// Connect the deleteKeyPressed signal
+			connect(imageLabel, &DraggableImage::deleteKeyPressed, this, [=]()
+				{
+					this->increaseValue(buttonId);
+					// Disconnect the signal when the image is deleted
+					disconnect(imageLabel, &DraggableImage::deleteKeyPressed, this, nullptr);
+					// Reset the highlightedImage after deleting
+					highlightedImage = nullptr;
+				}
+			);
+
+			// Update the highlightedImage to the newly generated image
+			highlightedImage = imageLabel;
+
 			decreaseValue(buttonId);
 			connect(imageLabel, &DraggableImage::deleteKeyPressed, this, [=]() {this->increaseValue(buttonId); });
 		};

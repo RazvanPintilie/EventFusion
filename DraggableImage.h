@@ -10,6 +10,7 @@ class DraggableImage : public QLabel
 
 public:
     DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent = nullptr);
+    void setSelected(bool selected);
 
 signals:
     void imageMoved(const QPoint& newPos);
@@ -22,9 +23,9 @@ protected:
     void restoreOriginalPosition();
     void keyPressEvent(QKeyEvent* event);
     void rotateImage();
-    void setSelected(bool selected);
 
 private:
+    static DraggableImage* selectedImage;
     int buttonId;
     bool isDragging;
     QPoint offset;

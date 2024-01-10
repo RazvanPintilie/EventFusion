@@ -38,6 +38,7 @@ private:
     int remainingValue;
     int currentValue = 0;
     QVBoxLayout* mainLayout;
+    DraggableImage* highlightedImage;
 };
 
 #endif

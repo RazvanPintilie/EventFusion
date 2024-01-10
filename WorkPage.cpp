@@ -81,7 +81,6 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
 
 		buttonMap[buttonId] = button;
 		buttonsLayout->addWidget(button);
-
 	}
 
 	QFrame* frame = new QFrame(this);

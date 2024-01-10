@@ -30,7 +30,6 @@ void SignUpPage::onSignUpClicked()
 	{
 		QMessageBox::information(this, "Login", "Inregistrare reusita");
 		emit signupSuccess();
-
 	}
 	else
 	{

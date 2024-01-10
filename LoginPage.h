@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QMessageBox>
 #include <QLabel>
+#include <QDir>
 #include "DataBase.h"
 
 class LoginPage : public QWidget
@@ -17,6 +18,7 @@ public:
     LoginPage(QWidget* parent = nullptr);
 private slots:
     void onLoginClicked();
+    void createUserDirectories(const QString& username);
 signals:
     void loginSuccess();
 private:

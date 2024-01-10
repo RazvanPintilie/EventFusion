@@ -116,6 +116,7 @@
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
+    <ClCompile Include="ImageDetail.cpp" />
     <ClCompile Include="LoginPage.cpp" />
     <ClCompile Include="main.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -125,6 +126,7 @@
     </ClCompile>
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="SingupPage.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="WorkPage.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h" />
+    <ClInclude Include="User.h" />
     <QtMoc Include="DraggableImage.h" />
     <QtMoc Include="WorkPage.h" />
   </ItemGroup>

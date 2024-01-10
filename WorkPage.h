@@ -12,7 +12,11 @@
 #include <QMimeData>
 #include <QGridLayout>
 #include <QLayout>
+#include <qfile.h>
 #include "DraggableImage.h"
+#include "ImageDetail.cpp"
+#include <vector>
+
 class WorkPage : public QWidget
 {
     Q_OBJECT
@@ -20,7 +24,11 @@ public:
     WorkPage(QWidget* parent = nullptr);
 private slots:
     void decreaseValue(int buttonId);
+    void increaseValue(int buttonId);
+
 private:
+    void saveCoordinatesToFile(const QString& fileName, std::vector<ImageDetail> image);
+    void loadCoordinatesAndGenerateImages();
     QLabel* currentValueLabel;
     QLabel* remainingValueLabel;
     QMap<int, QPushButton*> buttonMap; // Mapare ID buton - Buton

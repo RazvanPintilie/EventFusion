@@ -44,6 +44,12 @@
     <ClCompile Include="DraggableImage.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImageDetail.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainWindow.h">
@@ -64,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

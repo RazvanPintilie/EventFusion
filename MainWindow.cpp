@@ -24,12 +24,12 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 
     loginPage = new LoginPage;
     signUpPage = new SignUpPage;
-    workPage = new WorkPage;
+    workPage = nullptr;
 
     stackedWidget->addWidget(buttonWidget); // Adăugarea widget-ului cu butoane în QStackedWidget
     stackedWidget->addWidget(loginPage);
     stackedWidget->addWidget(signUpPage);
-    stackedWidget->addWidget(workPage);
+    // stackedWidget->addWidget(workPage);
 
     QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->addWidget(stackedWidget);
@@ -61,5 +61,9 @@ void MainWindow::onBackClicked()
 
 void MainWindow::switchToWorkPage()
 {
-    stackedWidget->setCurrentIndex(3); // Schimbarea la pagina de înregistrare (indexul 2 în QStackedWidget)
+    if (!workPage) {
+        workPage = new WorkPage;
+        stackedWidget->addWidget(workPage);
+    }
+    stackedWidget->setCurrentIndex(stackedWidget->indexOf(workPage));
 }

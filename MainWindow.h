@@ -26,8 +26,6 @@ private:
     QPushButton* loginButton;
     QPushButton* signUpButton;
     
-
-    // buttons
     LoginPage* loginPage;
     SignUpPage* signUpPage;
     QPushButton* exitButton;

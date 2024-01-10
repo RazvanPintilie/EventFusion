@@ -31,6 +31,7 @@ void LoginPage::onLoginClicked()
     {
         User::getInstance().setUsername(username);
         QMessageBox::information(this, "Login", "Logare reușită");
+
         createUserDirectories(username);
         emit loginSuccess();
     }

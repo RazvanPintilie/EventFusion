@@ -22,6 +22,8 @@ class WorkPage : public QWidget
     Q_OBJECT
 public:
     WorkPage(QWidget* parent = nullptr);
+public:
+    static WorkPage* createInstance(QWidget* parent = nullptr);
 private slots:
     void decreaseValue(int buttonId);
     void increaseValue(int buttonId);
@@ -31,6 +33,7 @@ private:
     void loadCoordinatesAndGenerateImages();
     QLabel* currentValueLabel;
     QLabel* remainingValueLabel;
+    QLabel* currentUsernameLabel;
     QMap<int, QPushButton*> buttonMap; // Mapare ID buton - Buton
     int remainingValue;
     int currentValue = 0;

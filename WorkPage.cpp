@@ -2,20 +2,23 @@
 #include <iostream>
 #include "User.h"
 
+
 WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
     setWindowTitle("Work Page");
 
     std::vector<ImageDetail> imageDetails;
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     QVBoxLayout* buttonsLayout = new QVBoxLayout();
+    QString username = User::getInstance().getUsername();
 
     remainingValue = 100;
     QLabel* capacitateRamasaString = new QLabel("Capacitate ramasa: ", this);
     QLabel* capacitateCurentaString = new QLabel("Capacitate curenta: ", this);
-    QLabel* currentUsernameString = new QLabel("Conectat ca:"+User::getInstance().getUsername(), this);
-    QLabel* currentUsernameLabel= new QLabel(User::getInstance().getUsername(), this);
+    QLabel* currentUsernameString = new QLabel("Conectat ca: ", this);
+    
     remainingValueLabel = new QLabel(QString::number(remainingValue), this);
     currentValueLabel = new QLabel(QString::number(currentValue), this);
+    currentUsernameLabel = new QLabel(User::getInstance().getUsername(), this);
 
     QPushButton* saveImageButton = new QPushButton("Salvează Imaginile", this);
 
@@ -23,13 +26,13 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
     remainingValueLabel->move(800, 0);
     capacitateCurentaString->move(690, 30);
     currentValueLabel->move(800, 30);
-    
-    QString login = User::getInstance().getUsername();
+    currentUsernameString->move(400, 0);
+
+    currentUsernameLabel->move(470, 0);
     
     QString basePath = "";
     for (int index = 0; index < 4; ++index)
     {
-        qDebug() << "dasdasddasadssad";
         int buttonId = index;
         QString imagePath = basePath + QString::number(index) + ".png";
         QIcon buttonIcon(imagePath);
@@ -39,6 +42,7 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent) {
         button->setFixedSize(QSize(50, 50));
         button->setStyleSheet("QPushButton { border: 1px solid #000000; padding: 0; }");
         auto generateImage = [=]() {
+            currentUsernameLabel = new QLabel(User::getInstance().getUsername(), this);
             DraggableImage* imageLabel = new DraggableImage(buttonIcon.pixmap(QSize(100, 100)),buttonId, this);
             imageLabel->setFixedSize(50, 50);
             imageLabel->move(button->pos() + QPoint(0, 0));

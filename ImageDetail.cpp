@@ -4,12 +4,14 @@ private:
 	int x;
 	int y;
 	int id;
+	int rotateIndex;
 public:
-	ImageDetail(int x, int y, int id)
+	ImageDetail(int x, int y, int id,int rotateIndex)
 	{
 		this->x = x;
 		this->y = y;
 		this->id = id;
+		this->rotateIndex = rotateIndex;
 	}
 	ImageDetail() {};
 
@@ -18,7 +20,7 @@ public:
 		this->x = x;
 	}
 
-	void setY(int)
+	void setY(int y)
 	{
 		this->y = y;
 	}
@@ -27,7 +29,10 @@ public:
 	{
 		this->id = id;
 	}
-
+	void setRotateIndex(int rotateIndex) 
+	{
+		this->rotateIndex=rotateIndex;
+	}
 	int getX()
 	{
 		return x;
@@ -41,5 +46,8 @@ public:
 	int getId()
 	{
 		return id;
+	}
+	int getRotateIndex() {
+		return rotateIndex;
 	}
 };

@@ -15,6 +15,7 @@ public:
 signals:
     void imageMoved(const QPoint& newPos);
     void deleteKeyPressed(int buttonId);
+    void imageMovedd();
 
 protected:
     void mousePressEvent(QMouseEvent* event) override;
@@ -22,7 +23,9 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event) override;
     void restoreOriginalPosition();
     void keyPressEvent(QKeyEvent* event);
-    void rotateImage();
+public:
+    int getRotateNumber();
+    void rotateImage(int roateNumber);
 
 private:
     static DraggableImage* selectedImage;
@@ -30,6 +33,7 @@ private:
     bool isDragging;
     QPoint offset;
     QPoint originalPosition;
+    int rotateNumber;
 };
 
 #endif

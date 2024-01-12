@@ -8,11 +8,14 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QDrag>
+#include <QRegularexpression>
 #include <QMouseEvent>
 #include <QMimeData>
 #include <QGridLayout>
 #include <QLayout>
+#include <QFileDialog>
 #include <qfile.h>
+#include <Qdir>
 #include "DraggableImage.h"
 #include "ImageDetail.cpp"
 #include <vector>
@@ -24,13 +27,12 @@ public:
     WorkPage(QWidget* parent = nullptr);
 public:
     static WorkPage* createInstance(QWidget* parent = nullptr);
+    void afiseazaDetalii();
 private slots:
     void decreaseValue(int buttonId);
     void increaseValue(int buttonId);
 
 private:
-    void saveCoordinatesToFile(const QString& fileName, std::vector<ImageDetail> image);
-    void loadCoordinatesAndGenerateImages();
     QLabel* currentValueLabel;
     QLabel* remainingValueLabel;
     QLabel* currentUsernameLabel;
@@ -39,6 +41,9 @@ private:
     int currentValue = 0;
     QVBoxLayout* mainLayout;
     DraggableImage* highlightedImage;
+    std::vector<ImageDetail> imageDetails;
+    void generateImage(int buttonId, const QIcon& buttonIcon,int x, int y, int rotateIndex);
+    void incarcaDate();
 };
 
 #endif

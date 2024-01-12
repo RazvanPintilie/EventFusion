@@ -31,7 +31,7 @@ public:
 	}
 	void setRotateIndex(int rotateIndex) 
 	{
-		this->rotateIndex=rotateIndex;
+		this->rotateIndex = rotateIndex;
 	}
 	int getX()
 	{
@@ -47,7 +47,8 @@ public:
 	{
 		return id;
 	}
-	int getRotateIndex() {
-		return rotateIndex;
+	int getRotateIndex()
+	{
+		return this->rotateIndex;
 	}
 };

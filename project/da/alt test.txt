@@ -1,8 +1,0 @@
-X: 643, Y: 409, ID: 2, ROTATE: 1 
-X: 417, Y: 246, ID: 0, ROTATE: 1 
-X: 582, Y: 185, ID: 1, ROTATE: 1 
-X: 110, Y: 335, ID: 2, ROTATE: 1 
-X: 149, Y: 377, ID: 3, ROTATE: 1 
-X: 110, Y: 335, ID: 2, ROTATE: 1 
-X: 110, Y: 211, ID: 1, ROTATE: 1 
-X: 110, Y: 87, ID: 0, ROTATE: 1 

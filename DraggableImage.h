@@ -9,12 +9,13 @@ class DraggableImage : public QLabel
     Q_OBJECT
 
 public:
-    DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent = nullptr);
+    DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent = nullptr, int rotateNumber = 0);
     void setSelected(bool selected);
 
 signals:
     void imageMoved(const QPoint& newPos);
     void deleteKeyPressed(int buttonId);
+    void rightClick();
     void imageMovedd();
 
 protected:

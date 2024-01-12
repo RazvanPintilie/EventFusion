@@ -21,10 +21,9 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 	currentValueLabel = new QLabel(QString::number(currentValue), this);
 	currentUsernameLabel = new QLabel(User::getInstance().getUsername(), this);
 
-	
 	//save button
 	QPushButton* saveButton = new QPushButton("Save", this);
-	
+
 	capacitateRamasaString->move(690, 0);
 	remainingValueLabel->move(800, 0);
 	capacitateCurentaString->move(690, 30);
@@ -73,7 +72,6 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 							return detail.getId() == buttonId &&
 								detail.getX() == imageLabel->pos().x() &&
 								detail.getY() == imageLabel->pos().y();
-								
 						});
 
 					imageDetails.erase(it, imageDetails.end());
@@ -84,15 +82,17 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 					highlightedImage = nullptr;
 				}
 			);
-			
 
 			// Update the highlightedImage to the newly generated image
 			highlightedImage = imageLabel;
-
 			decreaseValue(buttonId);
+
 			connect(imageLabel, &DraggableImage::deleteKeyPressed, this, [=]() {this->increaseValue(buttonId); });
-			ImageDetail imageDetail(imageLabel->pos().x(), imageLabel->pos().y(), buttonId,imageLabel->getRotateNumber());
+
+			ImageDetail imageDetail(imageLabel->pos().x(), imageLabel->pos().y(), buttonId, imageLabel->getRotateNumber());
+
 			imageDetails.push_back(imageDetail);
+
 			connect(imageLabel, &DraggableImage::imageMoved, this, [=](const QPoint& newPos)
 				{
 					if (highlightedImage)
@@ -100,7 +100,7 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 						// Find the corresponding ImageDetail and update its position
 						for (auto& imageDetail : imageDetails)
 						{
-							if (imageDetail.getId()== buttonId)
+							if (imageDetail.getId() == buttonId)
 							{
 								imageDetail.setX(newPos.x());
 								imageDetail.setY(newPos.y());
@@ -109,9 +109,10 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 						}
 					}
 				});
+
 		};
 		connect(button, &QPushButton::clicked, this, generateImage);
-		
+
 		buttonMap[buttonId] = button;
 		buttonsLayout->addWidget(button);
 
@@ -121,7 +122,7 @@ WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highligh
 	{
 		incarcaDate();
 	}
-	
+
 	connect(saveButton, &QPushButton::clicked, this, &WorkPage::saveDetails);
 	// buttonsLayout->addWidget(saveButton);
 	saveButton->setGeometry(120, 510, 100, 30);
@@ -217,7 +218,7 @@ void WorkPage::saveDetails()
 			// Write the image details to the file
 			for (ImageDetail& imageDetail : imageDetails)
 			{
-				stream << "X: " << imageDetail.getX() << ", Y: " << imageDetail.getY() << ", ID: " << imageDetail.getId() << ", ROTATE: "<<imageDetail.getRotateIndex()<<" \n";
+				stream << "X: " << imageDetail.getX() << ", Y: " << imageDetail.getY() << ", ID: " << imageDetail.getId() << ", ROTATE: " << imageDetail.getRotateIndex() << " \n";
 			}
 
 
@@ -274,7 +275,7 @@ void WorkPage::incarcaDate()
 			if (buttonMap.contains(id))
 			{
 				// Generăm imaginea în funcție de informațiile din fișier
-				generateImage(id, buttonMap[id]->icon(),x,y,rotateIndex);
+				generateImage(id, buttonMap[id]->icon(), x, y, rotateIndex);
 			}
 		}
 	}
@@ -282,7 +283,7 @@ void WorkPage::incarcaDate()
 	file.close();
 }
 
-void WorkPage::generateImage(int buttonId, const QIcon& buttonIcon, int x,int y,int rotateIndex)
+void WorkPage::generateImage(int buttonId, const QIcon& buttonIcon, int x, int y, int rotateIndex)
 {
 	// Check if there's a highlighted image and unhighlight it
 	if (highlightedImage)
@@ -293,7 +294,7 @@ void WorkPage::generateImage(int buttonId, const QIcon& buttonIcon, int x,int y,
 	currentUsernameLabel = new QLabel(User::getInstance().getUsername(), this);
 	DraggableImage* imageLabel = new DraggableImage(buttonIcon.pixmap(QSize(100, 100)), buttonId, this);
 	imageLabel->setFixedSize(50, 50);
-	imageLabel->move(QPoint(x,y));
+	imageLabel->move(QPoint(x, y));
 	imageLabel->show();
 	imageLabel->setFocusPolicy(Qt::StrongFocus);
 
@@ -319,7 +320,9 @@ void WorkPage::generateImage(int buttonId, const QIcon& buttonIcon, int x,int y,
 	decreaseValue(buttonId);
 	connect(imageLabel, &DraggableImage::deleteKeyPressed, this, [=]() {this->increaseValue(buttonId); });
 	ImageDetail imageDetail(imageLabel->pos().x(), imageLabel->pos().y(), buttonId, rotateIndex);
+	imageDetail.setRotateIndex(rotateIndex);
 	imageLabel->rotateImage(rotateIndex);
+
 	imageDetails.push_back(imageDetail);
 	connect(imageLabel, &DraggableImage::imageMoved, this, [=](const QPoint& newPos)
 		{
@@ -332,13 +335,11 @@ void WorkPage::generateImage(int buttonId, const QIcon& buttonIcon, int x,int y,
 					{
 						imageDetail.setX(newPos.x());
 						imageDetail.setY(newPos.y());
-						imageDetail.setRotateIndex(rotateIndex);
-						
 						break;
 					}
 				}
 			}
-			
+
 		});
 }
 

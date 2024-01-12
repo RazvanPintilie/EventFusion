@@ -2,12 +2,12 @@
 
 DraggableImage* DraggableImage::selectedImage = nullptr;
 
-DraggableImage::DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent) : QLabel(parent), isDragging(false)
+DraggableImage::DraggableImage(const QPixmap& pixmap, int buttonId, QWidget* parent, int rotateNumber) : QLabel(parent), isDragging(false)
 {
 	setPixmap(pixmap);
 	setScaledContents(true);
 	originalPosition = QPoint(0, 0);
-	this->rotateNumber = 1;
+	this->rotateNumber = rotateNumber;
 }
 
 void DraggableImage::mousePressEvent(QMouseEvent* event)
@@ -34,18 +34,17 @@ void DraggableImage::mousePressEvent(QMouseEvent* event)
 		this->rotateNumber++;
 		rotateImage(1);
 		event->accept();
-		
-
+		emit rightClick();
 	}
 	QLabel::mousePressEvent(event);
-	
+
 }
 
 void DraggableImage::rotateImage(int roateNumber)
 {
 
 	QTransform transform;
-	int angle = 90*roateNumber;
+	int angle = 90 * roateNumber;
 	transform.rotate(angle);
 
 	QPixmap rotatedPixmap = pixmap().transformed(transform);
@@ -61,7 +60,7 @@ void DraggableImage::mouseMoveEvent(QMouseEvent* event)
 		event->accept();
 		emit imageMoved(newPosition);
 	}
-	
+
 	QLabel::mouseMoveEvent(event);
 }
 
@@ -108,7 +107,8 @@ void DraggableImage::setSelected(bool selected)
 		QWidget::setStyleSheet("border: none;");
 	}
 }
-int DraggableImage::getRotateNumber() {
+int DraggableImage::getRotateNumber()
+{
 	return this->rotateNumber;
 }
 

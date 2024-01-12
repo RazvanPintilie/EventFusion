@@ -1,0 +1,2 @@
+X: 545, Y: 204, ID: 3, ROTATE: 0 
+X: 234, Y: 305, ID: 2, ROTATE: 0 

@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 	signUpButton = new QPushButton("Sign Up", buttonWidget);
 	exitButton = new QPushButton("Exit", this);
 	// backButton = new QPushButton("Back", this);
-	exitButton->setGeometry(720, 520, 100, 50);
+	exitButton->setGeometry(720, 520, 100, 30);
 	// backButton->setGeometry(100, 500, 100, 50);
 	buttonLayout->addWidget(loginButton);
 	buttonLayout->addWidget(signUpButton);
@@ -40,13 +40,20 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 	connect(loginButton, &QPushButton::clicked, this, &MainWindow::onLoginClicked);
 	connect(signUpButton, &QPushButton::clicked, this, &MainWindow::onSignUpClicked);
 	// connect(backButton, &QPushButton::clicked, this, &MainWindow::onBackClicked);
-	connect(loginPage, &LoginPage::loginSuccess, this, &MainWindow::switchToWorkPage);
 	connect(signUpPage, &SignUpPage::signupSuccess, this, &MainWindow::onLoginClicked);
+	connect(loginPage, &LoginPage::loginSuccessWithOption, this, &MainWindow::onLoginSuccessWithOption);
 }
 
-void MainWindow::onLoginClicked()
+void MainWindow::onLoginSuccessWithOption(bool isNewProject)
 {
-	stackedWidget->setCurrentIndex(1); // Schimbarea la pagina de login (indexul 1 în QStackedWidget)
+	if (isNewProject)
+	{
+		switchToWorkPage(true);
+	}
+	else
+	{
+		switchToWorkPage(false);  // Call incarcaDate() for existing project
+	}
 }
 
 void MainWindow::onSignUpClicked()
@@ -58,12 +65,17 @@ void MainWindow::onBackClicked()
 	stackedWidget->setCurrentIndex(0); // Schimbarea la pagina de înregistrare (indexul 2 în QStackedWidget)
 }
 
-void MainWindow::switchToWorkPage()
+void MainWindow::switchToWorkPage(bool newProject)
 {
 	if (!workPage)
 	{
-		workPage = new WorkPage;
+		workPage = new WorkPage(newProject);
 		stackedWidget->addWidget(workPage);
 	}
 	stackedWidget->setCurrentIndex(stackedWidget->indexOf(workPage));
+}
+
+void MainWindow::onLoginClicked()
+{
+	stackedWidget->setCurrentIndex(1); // Schimbarea la pagina de login (indexul 1 în QStackedWidget)
 }

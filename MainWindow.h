@@ -1,5 +1,5 @@
-#ifndef EXITPAGE_H
-#define EXITPAGE_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QWidget>
 #include <QPushButton>
@@ -18,8 +18,8 @@ private slots:
     void onLoginClicked();
     void onSignUpClicked();
     void onBackClicked();
-    void switchToWorkPage();
-
+    void switchToWorkPage(bool newProjec);
+    void onLoginSuccessWithOption(bool isNewProject);
 private:
     QStackedWidget* stackedWidget;
 
@@ -34,4 +34,4 @@ private:
 };
 
 
-#endif // EXITPAGE_H
+#endif // MAINWINDOW_H

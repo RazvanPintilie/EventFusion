@@ -3,7 +3,7 @@
 #include "User.h"
 
 
-WorkPage::WorkPage(QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
+WorkPage::WorkPage(bool newProject, QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
 {
 	setWindowTitle("Work Page");
 	int indeximage = 0;
@@ -23,13 +23,7 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
 
 	
 	//save button
-	QPushButton* showDetailsButton = new QPushButton("Afișează Detalii", this);
-
-	//load button
-	QPushButton* loadDataButton = new QPushButton("Încarcă Date", this);
-	connect(loadDataButton, &QPushButton::clicked, this, &WorkPage::incarcaDate);
-
-	buttonsLayout->addWidget(loadDataButton);
+	QPushButton* saveButton = new QPushButton("Save", this);
 	
 	capacitateRamasaString->move(690, 0);
 	remainingValueLabel->move(800, 0);
@@ -120,10 +114,18 @@ WorkPage::WorkPage(QWidget* parent) : QWidget(parent), highlightedImage(nullptr)
 		
 		buttonMap[buttonId] = button;
 		buttonsLayout->addWidget(button);
+
+	}
+
+	if (!newProject)
+	{
+		incarcaDate();
 	}
 	
-	connect(showDetailsButton, &QPushButton::clicked, this, &WorkPage::afiseazaDetalii);
-	buttonsLayout->addWidget(showDetailsButton);
+	connect(saveButton, &QPushButton::clicked, this, &WorkPage::saveDetails);
+	// buttonsLayout->addWidget(saveButton);
+	saveButton->setGeometry(120, 510, 100, 30);
+
 	QFrame* frame = new QFrame(this);
 	frame->setFrameShape(QFrame::Box);
 	frame->setLineWidth(2);
@@ -197,7 +199,7 @@ void WorkPage::increaseValue(int buttonId)
 }
 
 
-void WorkPage::afiseazaDetalii()
+void WorkPage::saveDetails()
 {
 	QString username = User::getInstance().getUsername();
 

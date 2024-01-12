@@ -19,18 +19,23 @@
 #include "DraggableImage.h"
 #include "ImageDetail.cpp"
 #include <vector>
+#include <QObject>
+#include <functional>
 
 class WorkPage : public QWidget
 {
     Q_OBJECT
 public:
-    WorkPage(QWidget* parent = nullptr);
-public:
-    static WorkPage* createInstance(QWidget* parent = nullptr);
-    void afiseazaDetalii();
+    WorkPage(bool newProject, QWidget* parent = nullptr);
+    void saveDetails();
+    void incarcaDate();
+
 private slots:
     void decreaseValue(int buttonId);
     void increaseValue(int buttonId);
+
+signals:
+    void loadExistingProject();
 
 private:
     QLabel* currentValueLabel;
@@ -43,7 +48,7 @@ private:
     DraggableImage* highlightedImage;
     std::vector<ImageDetail> imageDetails;
     void generateImage(int buttonId, const QIcon& buttonIcon,int x, int y, int rotateIndex);
-    void incarcaDate();
+
 };
 
 #endif

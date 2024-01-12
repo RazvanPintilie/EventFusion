@@ -21,6 +21,7 @@ private slots:
     void createUserDirectories(const QString& username);
 signals:
     void loginSuccess();
+    void loginSuccessWithOption(bool isNewProject);
 private:
     QLineEdit* usernameEdit;
     QLineEdit* passwordEdit;

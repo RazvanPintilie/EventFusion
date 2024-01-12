@@ -33,7 +33,18 @@ void LoginPage::onLoginClicked()
 		QMessageBox::information(this, "Login", "Logare reușită");
 
 		createUserDirectories(username);
-		emit loginSuccess();
+		
+		// Show a dialog to choose between opening an existing project or creating a new one
+		QMessageBox::StandardButton reply;
+		reply = QMessageBox::question(this, "Choose an Option", "Do you want to open an existing project?",
+			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+
+		// Emit the loginSuccessWithOption signal based on the user's choice
+		if (reply == QMessageBox::Yes)
+			emit loginSuccessWithOption(false); // Open existing project
+		else if (reply == QMessageBox::No)
+			emit loginSuccessWithOption(true); // Create a new project
+
 	}
 	else
 	{

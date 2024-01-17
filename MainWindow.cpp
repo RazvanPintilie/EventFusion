@@ -6,10 +6,11 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent)
 {
 	setWindowTitle("Event Fusion");
 	resize(900, 600);
+	setFixedSize(900, 600);
 
 	stackedWidget = new QStackedWidget(this);
 
-	//Adăugare pagini în QStackedWidget
+	//Adăugare pagini în QStackedWidgeta
 	QWidget* buttonWidget = new QWidget;
 	QVBoxLayout* buttonLayout = new QVBoxLayout(buttonWidget);
 	loginButton = new QPushButton("Login", buttonWidget);

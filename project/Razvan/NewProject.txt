@@ -1,0 +1,4 @@
+X: 91, Y: 94, ID: 0, ROTATE: 0 
+X: 781, Y: 94, ID: 1, ROTATE: 0 
+X: 88, Y: 442, ID: 2, ROTATE: 0 
+X: 782, Y: 436, ID: 3, ROTATE: 0 
